@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  mount API::Root => '/api'
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' if defined? RailsAdmin
 
   # Static pages

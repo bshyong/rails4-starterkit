@@ -49,6 +49,10 @@ module StarterKit
     # Serve vendor fonts
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
+    # Auto-load API and its subdirectories
+    config.paths.add 'app/api', glob: '**/*.rb'
+    config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
+
     config.assets.precompile += %w( head )
 
     config.to_prepare do

@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
     end
   end
 
+# http://funonrails.com/2014/03/api-authentication-using-devise-token/
+  attr_accessible :authentication_token
+
   after_create :send_welcome_emails
 
   def display_name

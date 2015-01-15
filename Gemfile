@@ -14,6 +14,8 @@ gem 'terminal-notifier', group: [:development]
 # gem 'rb-inotify', :group => [:development, :test]   # monitor file changes without hammering the disk
 
 
+# API
+gem 'grape'
 
 # Monitoring
 gem 'rack-timeout', '~> 0.1.0beta4'
