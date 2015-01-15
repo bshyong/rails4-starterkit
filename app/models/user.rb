@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
     end
   end
 
-# http://funonrails.com/2014/03/api-authentication-using-devise-token/
-
   before_save :ensure_authentication_token
   after_create :send_welcome_emails
 
