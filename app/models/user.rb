@@ -12,12 +12,16 @@ class User < ActiveRecord::Base
   end
 
 # http://funonrails.com/2014/03/api-authentication-using-devise-token/
-  attr_accessible :authentication_token
 
+  before_save :ensure_authentication_token
   after_create :send_welcome_emails
 
   def display_name
     first_name.presence || email.split('@')[0]
+  end
+
+  def ensure_authentication_token
+    self.authentication_token ||= generate_authentication_token
   end
 
   # Case insensitive email lookup.
@@ -62,5 +66,14 @@ class User < ActiveRecord::Base
   def send_welcome_emails
     UserMailer.delay.welcome_email(self.id)
     # UserMailer.delay_for(5.days).find_more_friends_email(self.id)
+  end
+
+  private
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
 end
