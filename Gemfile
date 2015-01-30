@@ -16,6 +16,7 @@ gem 'terminal-notifier', group: [:development]
 
 # API
 gem 'grape'
+gem 'grape-active_model_serializers'
 
 # Monitoring
 gem 'rack-timeout', '~> 0.1.0beta4'

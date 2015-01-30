@@ -9,6 +9,15 @@ module API
         get do
           User.all
         end
+
+        desc "register new user"
+        params do
+          requires :email, type: String, desc: "email"
+          requires :password, type: String, desc: "password"
+        end
+        post do
+          # https://github.com/intridea/grape#basic-usage
+        end
       end
     end
   end
